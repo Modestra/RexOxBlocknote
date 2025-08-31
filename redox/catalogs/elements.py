@@ -5,6 +5,12 @@ class Element:
         self.atom_mass = atom_mass
         self.electronegativity = electronegativity
     
+    def __str__(self):
+        return str(self.name)
+    
+    def get_atom_mass(self):
+        return self.atom_mass
+    
 ELEMENTS = {
     'H': Element('H', 'Водород', 1.00794, 2.2),
     'He': Element('He', 'Гелий', 4.002602, 0),
@@ -18,3 +24,4 @@ ELEMENTS = {
     'Ne': Element('Ne', 'Неон', 20.179, 0),
     'Na': Element('Na', 'Натрий', 22.98977, 0.9),
 }
+
