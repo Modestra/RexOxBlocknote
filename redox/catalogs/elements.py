@@ -10,6 +10,9 @@ class Element:
     
     def get_atom_mass(self):
         return self.atom_mass
+
+    def get_element_info(self, symbol):
+        return ELEMENTS[symbol]
     
 ELEMENTS = {
     'H': Element('H', 'Водород', 1.00794, 2.2),
@@ -24,4 +27,23 @@ ELEMENTS = {
     'Ne': Element('Ne', 'Неон', 20.179, 0),
     'Na': Element('Na', 'Натрий', 22.98977, 0.9),
 }
+
+class ElementList:
+    """Массив с постоянными значениями для элементов"""
+    def elements_list():
+        result = {}
+        for element in ELEMENTS.keys():
+            result[element] = ELEMENTS[element].__dict__
+        return result
+
+class ChemicalPartical():
+    """Базовый класс для описания физико-химических параметров макрочастиц"""
+    atom_name: str
+    def __init__(self):
+        pass
+
+class BaseChemicalParticalList():
+    """Базовый класс для описания взаимодейсвия между частицами"""
+    def __init__(self):
+        pass
 
