@@ -1,4 +1,5 @@
 from typing import Any
+import json
 from redox.catalogs.elements import ElementList
 from redox.entities.atom import Atom, AtomList
 class Ion:

@@ -1,5 +1,5 @@
-from redox.catalogs.elements import ChemicalPartical, ELEMENTS
-class Atom(ChemicalPartical):
+from redox.catalogs.elements import *
+class Atom(BaseChemicalPartical):
     atom_name: str
     def __init__(self, atom_name: str):
         self.atom_name = atom_name
@@ -8,7 +8,8 @@ class Atom(ChemicalPartical):
         return str(ELEMENTS[self.atom_name].__dict__)
     
 
-class AtomList:
+class AtomList(BaseChemicalParticalList):
+    """Класс взаимодействия ансабля молекул в рамках иона"""
     atom: Atom
     count: int
 
@@ -18,3 +19,7 @@ class AtomList:
     
     def get_list(self):
         return {self.atom.atom_name: self.atom, "count": self.count}
+    
+    def set_band():
+        super().set_band()
+        

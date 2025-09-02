@@ -26,6 +26,7 @@ ELEMENTS = {
     'F': Element('F', 'Фтор', 18.998403, 4.0),
     'Ne': Element('Ne', 'Неон', 20.179, 0),
     'Na': Element('Na', 'Натрий', 22.98977, 0.9),
+    'S': Element('S', 'Сера', 32.076, 2.58)
 }
 
 class ElementList:
@@ -36,14 +37,16 @@ class ElementList:
             result[element] = ELEMENTS[element].__dict__
         return result
 
-class ChemicalPartical():
+class BaseChemicalPartical():
     """Базовый класс для описания физико-химических параметров макрочастиц"""
     atom_name: str
     def __init__(self):
         pass
 
 class BaseChemicalParticalList():
-    """Базовый класс для описания взаимодейсвия между частицами"""
+    """Базовый класс для описания взаимодействия между частицами"""
     def __init__(self):
         pass
 
+    def set_band():
+        """Установка связи между двумя связанными частицами"""
