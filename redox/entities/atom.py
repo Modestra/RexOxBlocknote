@@ -1,11 +1,24 @@
 from redox.catalogs.elements import *
+import uuid
 class Atom(BaseChemicalPartical):
     atom_name: str
+    molar_mass: float
+    bounds_hash = []
+    info = {}
     def __init__(self, atom_name: str):
         self.atom_name = atom_name
+        self.molar_mass = atom_name
+        self.bounds_hash = []
+        self.info = ELEMENTS[self.atom_name].__dict__
+
+    def info(self):
+        return ELEMENTS[self.atom_name].__dict__
     
     def __str__(self):
         return str(ELEMENTS[self.atom_name].__dict__)
+    
+    def __add__(self, partical):
+        return super().__add__(partical)
     
 
 class AtomList(BaseChemicalParticalList):

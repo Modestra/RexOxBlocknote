@@ -1,3 +1,4 @@
+from typing import List
 class Element:
     def __init__(self, symbol, name, atom_mass, electronegativity):
         self.symbol = symbol
@@ -40,13 +41,36 @@ class ElementList:
 class BaseChemicalPartical():
     """Базовый класс для описания физико-химических параметров макрочастиц"""
     atom_name: str
+    bounds = []
+    info = {}
     def __init__(self):
         pass
 
-class BaseChemicalParticalList():
+    def __add__(self, partical):
+        if isinstance(partical, BaseChemicalPartical):
+            return BaseChemicalPartical()
+        raise TypeError("Операция доступна только объектам класса BaseChemicalPartical")
+
+
+class BaseChemicalParticalList(List):
     """Базовый класс для описания взаимодействия между частицами"""
+    base_partical: BaseChemicalPartical
     def __init__(self):
         pass
+
+    def __getitem__(self):
+        return self.base_partical
+
+    def append(self, object):
+        return super().append(object)
+    
+    def pop(self, index = -1):
+        return super().pop(index)
 
     def set_band():
         """Установка связи между двумя связанными частицами"""
+        pass
+
+    def get_info():
+        """Сохранение результата статистической обработки в формате dict"""
+        pass
