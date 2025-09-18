@@ -58,8 +58,8 @@ class BaseChemicalParticalList(List):
     def __init__(self):
         pass
 
-    def __getitem__(self):
-        return self.base_partical
+    def __getitem__(self, key):
+        return self.base_partical[key]
 
     def append(self, object):
         return super().append(object)

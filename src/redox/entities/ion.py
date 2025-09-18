@@ -1,7 +1,7 @@
-from redox.catalogs.elements import ElementList
+from redox.catalogs.elements import *
 from redox.entities.atom import Atom, AtomList
 from events import Events
-class Ion:
+class Ion(BaseChemicalParticalList):
     atom_list: dict[str, AtomList] = {}
     count: int = 0
     def __init__(self, ion, count):
@@ -12,6 +12,9 @@ class Ion:
 
     def __str__(self):
         return str(self.__dict__)
+    
+    def __getitem__(self, key):
+        return super().__getitem__()
 
     def info(self):
         return self.atom_list
