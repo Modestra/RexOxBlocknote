@@ -1,5 +1,5 @@
-from redox.catalogs.elements import *
-from redox.entities.atom import Atom, AtomList
+from modchem.catalogs.elements import *
+from modchem.entities.atom import Atom, AtomList
 from events import Events
 class Ion(BaseChemicalParticalList):
     atom_list: dict[str, AtomList] = {}
