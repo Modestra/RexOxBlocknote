@@ -1,4 +1,5 @@
 # Игнорируем файлы Jupyter Notebooks
+pynblib
 *.ipynb
 
 # Игнорируем каталоги виртуальных сред Python
@@ -82,6 +83,7 @@ docker-compose.*
 Dockerfile.*
 
 # Другие вспомогательные файлы и папки
+dist
 node_modules/
 .babelrc
 .eslintrc
