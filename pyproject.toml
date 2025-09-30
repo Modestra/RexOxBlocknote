@@ -3,8 +3,8 @@ requires = ["setuptools>=75.8.1"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "modchem"
-version = "0.0.6"
+name = "modchemlib"
+version = "0.0.3"
 authors = [
   {name = "Modestra", email = "kirillkarachev04@gmail.com"},
 ]

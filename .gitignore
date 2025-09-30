@@ -76,6 +76,7 @@ build/
 *.dylib
 *.db
 *.sqlite
+*.egg-info
 .env*
 Dockerfile*
 docker-compose.*
