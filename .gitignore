@@ -1,4 +1,5 @@
 # Игнорируем файлы Jupyter Notebooks
+jupyter
 pynblib
 *.ipynb
 
@@ -75,6 +76,7 @@ build/
 *.dylib
 *.db
 *.sqlite
+*.egg-info
 .env*
 Dockerfile*
 docker-compose.*
@@ -90,3 +92,4 @@ node_modules/
 .prettierignore
 .tslint.json
 .editorconfig
+poetry.lock

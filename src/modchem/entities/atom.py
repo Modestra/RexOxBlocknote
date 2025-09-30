@@ -1,5 +1,4 @@
-from redox.catalogs.elements import *
-import uuid
+from modchem.catalogs.elements import *
 class Atom(BaseChemicalPartical):
     atom_name: str
     molar_mass: float
