@@ -1,4 +1,5 @@
 # Игнорируем файлы Jupyter Notebooks
+jupyter
 pynblib
 *.ipynb
 
