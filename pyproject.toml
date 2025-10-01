@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "modchemlib"
-version = "0.0.3"
+version = "0.0.4"
 authors = [
   {name = "Modestra", email = "kirillkarachev04@gmail.com"},
 ]
@@ -18,7 +18,6 @@ classifiers = [
    "Operating System :: OS Independent",
 ]
 dependencies = [
-    "argparse>=1.4.0",
     "Events>=0.5",
     "requests>=2.32.5",
 ]
