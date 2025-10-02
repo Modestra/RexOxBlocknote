@@ -1,4 +1,7 @@
-import sys, os
+import sys
+import os
+from modchem.templates import load_app_template, load_params_template
+from modchem.core import app
 from argparse import ArgumentParser
 from pathlib import Path
 class ExecuteEnvironment:
@@ -9,14 +12,18 @@ class ExecuteEnvironment:
         self.args = args
         
     def initialize(self):
-        self.execute(self.args)
+        self._execute(self.args)
 
-    def execute(self, dir: str):
-        os.environ["MODCHEM_INIT"] = os.path.join(os.getcwd(), dir)
+    def _execute(self, dir: str):
+        base_dir = os.path.join(os.getcwd(), dir)
+        os.environ["MODCHEM_APP_NAME"] = dir
         try:
-            Path(os.path.join(os.getcwd(), dir)).mkdir()
+            _app = app.register_app(name=dir, params='params.py', dir=base_dir)
+            _app.create()
+            load_app_template()
+            load_params_template()
         except FileExistsError:
-            sys.stderr.write(f"Путь {os.getenv("MODCHEM_INIT")} уже занят")
+            sys.stderr.write(f"Путь {base_dir} уже занят")
 
 def execute_command_line(argv=None):
     print(argv)
