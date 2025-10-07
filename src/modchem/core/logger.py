@@ -4,7 +4,7 @@ def logger(**decorator_kwargs):
     def actual_decorator(func):
         def wrapper(*args, **kwargs):
             logging.basicConfig(level=logging.DEBUG, 
-                                filename=f'log/{decorator_kwargs["logfile"]}', filemode='a+',
+                                filename=f'{decorator_kwargs["logfile"]}', filemode='a+',
                                 format='%(asctime)s [%(levelname)s]: %(message)s',
                                 encoding="utf-8")
             result = func(*args, **kwargs)
