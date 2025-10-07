@@ -4,6 +4,7 @@ class Application:
     app_name = ""
     app_params = ""
     path_dir = ""
+    log_dir = ""
     project_list = []
 
     def __init__(self):
@@ -13,6 +14,7 @@ class Application:
         self.app_name = name
         self.app_params = params
         self.path_dir = path_dir
+        self.log_dir = os.path.join(self.path_dir, "logs")
 
     def create(self):
         os.mkdir(self.path_dir)

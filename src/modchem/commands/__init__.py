@@ -2,8 +2,8 @@ import sys
 import os
 from modchem.templates import load_app_template, load_params_template
 from modchem.core import app
+from modchem.core import params
 from argparse import ArgumentParser
-from pathlib import Path
 class ExecuteEnvironment:
     """Класс инициализации виртуальной среды"""
     args = ""
