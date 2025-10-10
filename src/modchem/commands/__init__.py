@@ -4,7 +4,6 @@ from modchem.templates import load_app_template, load_params_template
 from modchem.core import app
 from modchem.commands.command import CreateProjectCommand
 from argparse import ArgumentParser
-from modchem.core.logger import logger
 class ExecuteEnvironment:
     """Класс инициализации виртуальной среды"""
     args = ""
@@ -26,7 +25,6 @@ class ExecuteEnvironment:
         except FileExistsError:
             sys.stderr.write(f"Путь {base_dir} уже занят")
 
-@logger(logfile="command.log")
 def execute_command_line(argv):
     parser = ArgumentParser(description="Initial Experiment Environment")
     parser.add_argument("command", help="Select command")

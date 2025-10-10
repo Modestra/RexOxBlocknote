@@ -16,9 +16,6 @@ class BaseProgram:
 
 class Application(BaseProgram):
 
-    def __init__(self):
-        pass
-
     def create(self, name: str, params: str, dir: str):
         os.mkdir(dir)
         return super().create(name, params, dir)
