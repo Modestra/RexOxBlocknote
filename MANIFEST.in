@@ -1,4 +1,4 @@
 include MANIFEST.in
 graft src
--*.pyc
-recursive-exclude __pycache__ *
+global-exclude *.pyc
+recursive-exclude * __pycache__
