@@ -1,5 +1,9 @@
 from modchem.core.project import Project
 from modchem.core.params import params
+from modchem.experiment.experimental import Experiment
+import os
+from importlib.util import spec_from_file_location, module_from_spec
+import inspect
 class BaseCommand:
     name=""
     description=""
@@ -37,4 +41,22 @@ class ReadParamsCommand(BaseCommand):
     def execute(self):
         params.update_params()
         params.get_config()
+
+class InitProjectCommand(BaseCommand):
+
+    def __init__(self, name, description):
+        super().__init__(name, description)
+    
+    def execute(self, title: str):
+        try:
+            #load moduls on file path
+            file = os.path.join(os.getcwd(), title, "main.py")
+            spec = spec_from_file_location(title, file)
+            module = module_from_spec(spec)
+            spec.loader.exec_module(module)
+            all_members = inspect.getmembers(module)
+        except FileExistsError:
+            print("File main.py is not found")
+        except FileNotFoundError:
+            print("File main.py is not found")
 

@@ -1,9 +1,21 @@
-from events import Events
+import threading
+import os
+import importlib.util
 class BaseExperiment():
     """Базовый класс описания эксперимента"""
-    events = Events()
     def __init__(self):
         pass
 
-    if __name__ == "__main__":
-        print("Инициализация эксперимента")
+    def init(self, title: str):
+        print("Initialization experiment on thread...")
+
+class Experiment(BaseExperiment):
+
+    def __init__(self):
+        super().__init__()
+    
+    def init(self, project):
+        pass
+
+    def before_init():
+        print("Loading parameters before init...")

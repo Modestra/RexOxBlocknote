@@ -1,6 +1,5 @@
 from modchem.core.app import BaseProgram
 import os
-import ast
 import re
 
 class AppParams(BaseProgram):
