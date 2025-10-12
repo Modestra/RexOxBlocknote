@@ -1,6 +1,5 @@
-from modchem.catalogs.elements import *
+from modchem.catalogs.elements import BaseChemicalParticalList
 from modchem.entities.atom import Atom, AtomList
-from events import Events
 class Ion(BaseChemicalParticalList):
     atom_list: dict[str, AtomList] = {}
     count: int = 0

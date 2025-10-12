@@ -1,6 +1,8 @@
-import requests
+import pandas as pd
+import os
 
 def periodic_table():
-   return requests.get("http://185.173.92.249:8100/periodic").json()
+   df = pd.read_csv(os.path.join(os.path.dirname(__file__), 'redox_periodictable.csv'))
+   return df
         
     

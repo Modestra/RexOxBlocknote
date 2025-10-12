@@ -1,43 +1,49 @@
-import sys, os
-from .command import ExecuteCommand
+import sys
+import os
+from modchem.templates import load_app_template, load_params_template
+from modchem.core import app, params
+from modchem.commands.command import CreateProjectCommand, DeleteProjectCommand, InitProjectCommand, ReadParamsCommand
 from argparse import ArgumentParser
-from pathlib import Path
 class ExecuteEnvironment:
     """Класс инициализации виртуальной среды"""
     args = ""
     commands = []
     def __init__(self, args):
         self.args = args
-        self.commands.append(ExecuteCommand(
-            name= "ExecuteExpetiment",
-            description= "Запуск виртуальной среды эксперимента"
-        ).dict_parser())
         
     def initialize(self):
-        self.execute(self.args)
+        self._execute(self.args)
 
-    def execute(self, dir: str):
-        os.environ["MODCHEM_INIT"] = os.path.join(os.getcwd(), dir)
-        print(os.getenv("MODCHEM_INIT"))
+    def _execute(self, dir: str):
+        base_dir = os.path.join(os.getcwd(), dir)
+        os.environ.setdefault("MODCHEM_APP_NAME", dir)
+        _app = app.Application()
+        _params = params.AppParams()
         try:
-            os.mkdir(os.getenv("MODCHEM_INIT"))
-            #file_path = Path(f'{os.getenv("MODCHEM_INIT")}/settings.py')
+            _app.create(name=dir, params='params.py', dir=base_dir)
+            _params.create(params="params.py")
+            load_app_template()
+            load_params_template()
         except FileExistsError:
-            sys.stderr.write(f"Путь {os.getenv("MODCHEM_INIT")} уже занят")
+            sys.stderr.write(f"Путь {base_dir} уже занят")
 
-    def help_info(self):
-        """Вывести информацию о текущих командах"""
-        sys.stdout.write("Команды\n")
-        for command in self.commands:
-            self.info(command)
-        
-    def info(self, command):
-        sys.stdout.write(f"\t{command["name"]} - {command["description"]}")
+def execute_command_line(argv):
+    parser = ArgumentParser(description="Initial Experiment Environment")
+    parser.add_argument("command", help="Select command")
+    parser.add_argument("name", help="Set Name")
+    _argv = parser.parse_args()
+    if 'create_project' == _argv.command:
+        CreateProjectCommand("create_project", "Creating Project").execute(title=_argv.name)
+    if 'delete_project' == _argv.command:
+        DeleteProjectCommand("delete_project", "Deleting Project").execute(title=_argv.name)
+    if 'get_parameters' == _argv.command:
+        ReadParamsCommand("get_parameters", "Read Parameters").execute()
+    if 'init_experiment' == _argv.command:
+        InitProjectCommand("init_experiment", "Init Experiment").execute(title=_argv.name)
 
 def execute_experiment_environment():
     parser = ArgumentParser(description="Initial Experiment Environment")
     parser.add_argument("project_name", help="Environment name")
     argv = parser.parse_args()
-    print(argv._get_kwargs()[0][1])
     execute = ExecuteEnvironment(args=argv._get_kwargs()[0][1])
     execute.initialize()

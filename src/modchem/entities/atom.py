@@ -1,4 +1,4 @@
-from modchem.catalogs.elements import *
+from modchem.catalogs.elements import BaseChemicalPartical, ELEMENTS, BaseChemicalParticalList
 class Atom(BaseChemicalPartical):
     atom_name: str
     molar_mass: float
