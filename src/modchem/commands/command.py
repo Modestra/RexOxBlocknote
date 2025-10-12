@@ -1,4 +1,5 @@
 from modchem.core.project import Project
+from modchem.core.params import params
 class BaseCommand:
     name=""
     description=""
@@ -27,4 +28,13 @@ class DeleteProjectCommand(BaseCommand):
     def execute(self, title: str):
         project = Project(name=title)
         project.delete()
+
+class ReadParamsCommand(BaseCommand):
+
+    def __init__(self, name, description):
+        super().__init__(name, description)
+    
+    def execute(self):
+        params.update_params()
+        params.get_config()
 

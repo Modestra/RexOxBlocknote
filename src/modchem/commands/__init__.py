@@ -2,7 +2,7 @@ import sys
 import os
 from modchem.templates import load_app_template, load_params_template
 from modchem.core import app, params
-from modchem.commands.command import CreateProjectCommand, DeleteProjectCommand
+from modchem.commands.command import CreateProjectCommand, DeleteProjectCommand, ReadParamsCommand
 from argparse import ArgumentParser
 class ExecuteEnvironment:
     """Класс инициализации виртуальной среды"""
@@ -36,6 +36,8 @@ def execute_command_line(argv):
         CreateProjectCommand("create_project", "Creating Project").execute(title=_argv.name)
     if 'delete_project' == _argv.command:
         DeleteProjectCommand("delete_project", "Deleting Project").execute(title=_argv.name)
+    if 'get_parameters' == _argv.command:
+        ReadParamsCommand("get_parameters", "Read Parameters").execute()
 
 def execute_experiment_environment():
     parser = ArgumentParser(description="Initial Experiment Environment")
