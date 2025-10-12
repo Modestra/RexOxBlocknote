@@ -1,5 +1,7 @@
 import os
+import shutil
 from modchem.core.app import BaseProgram
+from modchem.templates import load_project_main_template
 
 class Project(BaseProgram):
     name: str
@@ -19,7 +21,8 @@ class Project(BaseProgram):
         if self.name is None:
             return ValueError("Project hasn't name")
         os.mkdir(os.path.join(os.getcwd(), self.name))
+        load_project_main_template(project_name=self.name)
     
     def delete(self):
-        os.rmdir(os.path.join(os.getcwd(), self.name))
+        shutil.rmtree(os.path.join(os.getcwd(), self.name))
         

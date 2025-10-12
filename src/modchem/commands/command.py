@@ -54,7 +54,13 @@ class InitProjectCommand(BaseCommand):
             spec = spec_from_file_location(title, file)
             module = module_from_spec(spec)
             spec.loader.exec_module(module)
-            all_members = inspect.getmembers(module)
+            all_classes = inspect.getmembers(module, inspect.isclass)
+            target_class = next((cls for name, cls in all_classes if name == "TestExperiment"), None)
+            if target_class:
+                instance = target_class()
+                instance.init()
+            else:
+                print("Класс TestExperiment или метод init() не найден!. Попробуйте создать файл")
         except FileExistsError:
             print("File main.py is not found")
         except FileNotFoundError:
