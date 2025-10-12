@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "modchemlib"
-version = "0.0.4"
+version = "0.0.8"
 authors = [
   {name = "Modestra", email = "kirillkarachev04@gmail.com"},
 ]

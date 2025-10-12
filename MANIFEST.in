@@ -1,0 +1,4 @@
+include MANIFEST.in
+graft src
+-*.pyc
+recursive-exclude __pycache__ *
