@@ -8,7 +8,7 @@ class BaseCommand:
         self.description = description
     
     def execute():
-        print("Инициализация команды")
+        pass
 
 class CreateProjectCommand(BaseCommand):
 
@@ -18,5 +18,13 @@ class CreateProjectCommand(BaseCommand):
     def execute(self, title: str):
         project = Project(name=title)
         project.create()
-        print(f"Initialisation {self.name} - {self.description}")
+
+class DeleteProjectCommand(BaseCommand):
+
+    def __init__(self, name, description):
+        super().__init__(name, description)
+    
+    def execute(self, title: str):
+        project = Project(name=title)
+        project.delete()
 
