@@ -1,7 +1,9 @@
 import os
 import shutil
+
 from modchem.core.app import BaseProgram
 from modchem.templates import load_project_main_template
+
 
 class Project(BaseProgram):
     name: str
