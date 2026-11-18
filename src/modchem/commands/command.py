@@ -1,9 +1,11 @@
-from modchem.core.project import Project
-from modchem.core.params import params
-from modchem.experiment.experimental import Experiment
-import os
-from importlib.util import spec_from_file_location, module_from_spec
 import inspect
+import os
+from importlib.util import module_from_spec, spec_from_file_location
+
+from modchem.core.params import params
+from modchem.core.project import Project
+
+
 class BaseCommand:
     name=""
     description=""

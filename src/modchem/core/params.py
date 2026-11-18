@@ -1,6 +1,8 @@
-from modchem.core.app import BaseProgram
 import os
 import re
+
+from modchem.core.app import BaseProgram
+
 
 class AppParams(BaseProgram):
     params = {}
